@@ -7,11 +7,14 @@
                 <h3>How many cards should I pick</h3>
             </div>
             <div class="row mt-5">
-                <input type="range" class="col-10 form-control-range" min="1" max="15" @bind="numberOfCards"/>
+                <input type="range" class="col-10 form-control-range" min="1" max="15" @bind="numberOfCards" />
                 <div class="col-2">@numberOfCards</div>
             </div>
             <div class="row mt-5">
                 <button type="button" class="btn btn-primary" @onclick="()=>UpdateCards()">Pick Some Cards</button>
+            </div>
+            <div class="row mt-5">
+                <button type="button" class="btn btn-primary" @onclick="()=>Val()">Doubles</button>
             </div>
         </div>
         <div class="col-4">
@@ -27,10 +30,21 @@
 @code{
     int numberOfCards = 5;
     string[] pickedCards = new string[0];
+    double[] doubles = new double[0];
 
     // Event handler for the butoon
     private void UpdateCards()
     {
         pickedCards = PickACardBlazor.CardPicker.PickSomeCards(numberOfCards);
+        
+    }
+
+    private void Val()
+    {
+        doubles = PickACardBlazor.CardPicker.Value();
+        foreach (var item in doubles)
+        {
+            Console.WriteLine(item);
+        }
     }
 }

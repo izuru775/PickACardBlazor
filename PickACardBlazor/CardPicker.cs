@@ -5,7 +5,22 @@ namespace PickACardBlazor
     {
         // Creating a random number generator
         static Random random = new Random();
-
+        public static double[] Value()
+        {
+            double[] randomDoubles = new double[20];
+            for (int i = 0; i < 20; i++)
+            {
+                double value = random.NextDouble();
+                randomDoubles[i] = value;
+            }
+            return randomDoubles;
+        }
+        
+        /// <summary>
+        /// Picks a number of cards and return them.
+        /// </summary>
+        /// <param name="numberOfCards">The number of cards to pick.</param>
+        /// <returns>An array of strings that contain the card names.</returns>
         public static string[] PickSomeCards(int numberOfCards)
         {
             string[] pickedCards = new string[numberOfCards];
